@@ -9,7 +9,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
-public class JoystickView extends View implements Runnable {
+public class Joystick extends View implements Runnable {
 	// Constants
 	private final double RAD = 57.2957795;
 	public final static long DEFAULT_LOOP_INTERVAL = 100; // 100 ms
@@ -39,16 +39,16 @@ public class JoystickView extends View implements Runnable {
 	private int lastAngle = 0;
 	private int lastPower = 0;
 
-	public JoystickView(Context context) {
+	public Joystick(Context context) {
 		super(context);
 	}
 
-	public JoystickView(Context context, AttributeSet attrs) {
+	public Joystick(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		initJoystickView();
 	}
 
-	public JoystickView(Context context, AttributeSet attrs, int defaultStyle) {
+	public Joystick(Context context, AttributeSet attrs, int defaultStyle) {
 		super(context, attrs, defaultStyle);
 		initJoystickView();
 	}

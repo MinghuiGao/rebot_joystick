@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <com.example.demo_1.tools.JoystickView
+    <com.example.demo_1.tools.Joystick
         android:id="@+id/joystick_view"
         android:layout_width="match_parent"
         android:layout_gravity="bottom"
