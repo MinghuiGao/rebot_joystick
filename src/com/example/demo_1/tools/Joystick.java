@@ -188,6 +188,11 @@ public class Joystick extends View implements Runnable {
 		return true;
 	}
 
+	/**
+	 * 获取操纵杆的角度
+	 * @return
+	 * TODO: 这里的 角度可能需要更改，改为更精确的角度。
+	 */
 	private int getAngle() {
 		if (xPosition > centerX) {
 			if (yPosition < centerY) {
@@ -256,7 +261,9 @@ public class Joystick extends View implements Runnable {
 	public void setOnJoystickMoveListener(OnJoystickMoveListener listener,
 			long repeatInterval) {
 		this.onJoystickMoveListener = listener;
-		this.loopInterval = repeatInterval;
+		if(repeatInterval > 0){
+			this.loopInterval = repeatInterval;
+		}
 	}
 
 	public interface OnJoystickMoveListener {
