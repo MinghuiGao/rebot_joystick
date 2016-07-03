@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -54,8 +55,10 @@ public class JoystickView extends View implements Runnable {
 
 	protected void initJoystickView() {
 		mainCircle = new Paint(Paint.ANTI_ALIAS_FLAG);
-		mainCircle.setColor(Color.WHITE);
-		mainCircle.setStyle(Paint.Style.FILL_AND_STROKE);
+		// 修改主控制圆环的样式
+		mainCircle.setColor(Color.GREEN);
+		mainCircle.setStyle(Paint.Style.STROKE);
+		mainCircle.setStrokeWidth(2);
 
 		secondaryCircle = new Paint();
 		secondaryCircle.setColor(Color.GREEN);
@@ -76,6 +79,7 @@ public class JoystickView extends View implements Runnable {
 
 	@Override
 	protected void onFinishInflate() {
+		Log.i("onfinishInfalte", "onfinishInfoa");
 	}
 
 	@Override
@@ -83,10 +87,14 @@ public class JoystickView extends View implements Runnable {
 		super.onSizeChanged(xNew, yNew, xOld, yOld);
 		// before measure, get the center of view
 		xPosition = (int) getWidth() / 2;
-		yPosition = (int) getWidth() / 2;
+		//yPosition = (int) getWidth() / 2;
+		// 修改控制原点的位置
+		yPosition = (int) getHeight();
 		int d = Math.min(xNew, yNew);
 		buttonRadius = (int) (d / 2 * 0.25);
+		Log.i("", "buttonRadius : "+buttonRadius);
 		joystickRadius = (int) (d / 2 * 0.75);
+		Log.i("", "joystickRadius : "+joystickRadius);
 
 	}
 
@@ -122,20 +130,24 @@ public class JoystickView extends View implements Runnable {
 	protected void onDraw(Canvas canvas) {
 		// super.onDraw(canvas);
 		centerX = (getWidth()) / 2;
-		centerY = (getHeight()) / 2;
-
+		//centerY = (getHeight()) / 2;
+		// 修改控制圆环的位置，画成半圆
+		centerY = getHeight();
 		// painting the main circle
+		
 		canvas.drawCircle((int) centerX, (int) centerY, joystickRadius,
 				mainCircle);
 		// painting the secondary circle
-		canvas.drawCircle((int) centerX, (int) centerY, joystickRadius / 2,
-				secondaryCircle);
+		// 不画内部圆圈
+		//canvas.drawCircle((int) centerX, (int) centerY, joystickRadius / 2,
+		//		secondaryCircle);
 		// paint lines
 		canvas.drawLine((float) centerX, (float) centerY, (float) centerX,
 				(float) (centerY - joystickRadius), verticalLine);
-		canvas.drawLine((float) (centerX - joystickRadius), (float) centerY,
-				(float) (centerX + joystickRadius), (float) centerY,
-				horizontalLine);
+		// 先不画水平线
+		//canvas.drawLine((float) (centerX - joystickRadius), (float) centerY,
+		//	(float) (centerX + joystickRadius), (float) centerY,
+		//		horizontalLine);
 		canvas.drawLine((float) centerX, (float) (centerY + joystickRadius),
 				(float) centerX, (float) centerY, horizontalLine);
 

@@ -2,63 +2,46 @@
 <com.example.demo_1.tools.SuperCamera xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-    
-    <SurfaceView 
+
+    <SurfaceView
         android:id="@+id/sv_camera_display"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
-    
-    <LinearLayout 
-        android:id="@+id/ll_joystick"
-        android:layout_width="200dip"
-        android:layout_height="200dip"
-        android:orientation="horizontal"
-        android:layout_gravity="bottom|center_horizontal"
-        >
-        <com.example.demo_1.tools.JoystickView
-            android:id="@+id/joystick_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            
-            />
-        
-    </LinearLayout>
-    
-    <LinearLayout 
+        android:layout_height="match_parent" />
+
+    <com.example.demo_1.tools.JoystickView
+        android:id="@+id/joystick_view"
+        android:layout_width="match_parent"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="41dip"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
         android:id="@+id/ll_bts"
         android:layout_width="match_parent"
         android:layout_height="40dip"
-        android:orientation="horizontal"
-       	android:layout_gravity="bottom"
-        >
-        
+        android:layout_gravity="bottom"
+        android:orientation="horizontal" >
+
         <Button
             android:id="@+id/bt_back"
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="返回"
-            />
-        
+            android:text="返回" />
+
         <Button
             android:id="@+id/bt_take_pic"
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="拍照"
-            />
-        
+            android:text="拍照" />
+
         <Button
             android:id="@+id/bt_flash"
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="开闪"
-            />
-        
-        
+            android:text="开闪" />
     </LinearLayout>
-    
 
 </com.example.demo_1.tools.SuperCamera>
